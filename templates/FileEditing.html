@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+<div>
+
+<a href="FileEditing.html?fl={{ prev_folder }}"><h1>..</h1></a>
+
+{% for i in folder_list %}
+	<a href="FileEditing.html?fl={{ i }}&prev_folder={{ prev_folder }}{{ title }}\"><h1>{{ i }}</h1></a>
+{% endfor %}
+
+<br>
+
+{% for i in file_list %}
+	{% if title %}
+		<a href="FileEditing.html?fl={{ title }}\{{ i }}&prev_folder={{ prev_folder }}"><h1>{{ i }}</h1></a>
+	{% else %}
+		<a href="FileEditing.html?fl={{ i }}&prev_folder={{ prev_folder }}"><h1>{{ i }}</h1></a>
+	{% endif %}
+{% endfor %}
+
+</div>
+{% endblock %}
